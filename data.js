@@ -10,8 +10,14 @@ async function loadSongs() {
     return response.data.record.songs;
 }
 
+async function savesongs(songinfo) {
+    console.log("saved")
+    const response = await axios.put(`${JSON_BIN_BASE_URL}/b/${JSON_BIN_ID}/save`);
+    console.log(response.data);
+
+}
 let songs = [];
-function addSongs(songs,song, artist, rating) {
+function addSongs(songs, song, artist, rating) {
     let songinfo = {
         "id": Math.floor(Math.random() * 10000 + 1),
         "song": song,
@@ -32,13 +38,29 @@ function editSong(songs, songid, song, artist) {
     // use a linear search to find the book
     let songToEdit = null;
     for (let b of song) {
-      if (b.id === songid) {
-       bookToEdit = b;
-      break;
-      }
+        if (b.id === songid) {
+            bookToEdit = b;
+            break;
+        }
     }
-   
+
     songToEdit.song = songs;
-    songToEdit.artist= artist;
-  }
-  
+    songToEdit.artist = artist;
+}
+
+function deleteSong(songs, songid) {
+    // find the index of the book to delete
+    let indexToDelete = null;
+    let index = -1; // start from -1 because the first element to 0
+
+    for (let b of songs) {
+        index = index + 1;
+        if (b.id == songid) {
+            indexToDelete = index;
+            break;
+        }
+    }
+
+    songs.splice(indexToDelete, 1);
+
+}

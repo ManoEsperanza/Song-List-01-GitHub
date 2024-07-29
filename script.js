@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             let songs = prompt("Enter the new song");
             let artist = prompt("Enter the new artist");
             let rating = prompt("Enter the rating")
-            editSong(songs, songid, artist, rating);
+            editSong(songid, songs, artist, rating);
             // renderList();
 
         });
@@ -44,11 +44,21 @@ addBtn.addEventListener("click", function () {
     let artist = document.querySelector("#artist").value;
     let rating = document.querySelector("#rating").value;
     addsong(songs, artist, rating);
-    // renderList();
+    renderList();
 });
 
 let saveBtn = document.querySelector("#saveBtn");
 saveBtn.addEventListener("click", function () {
     saveSongs(songs);
 })
+
+let allDeleteButtons = document.querySelectorAll(".delete");
+for (let button of allDeleteButtons) {
+    button.addEventListener("click", function (event) {
+        // get the book id
+        let songid = Number(event.target.dataset.songid);
+        deleteSong(songs, songid);
+        renderList();
+    })
+}
 
