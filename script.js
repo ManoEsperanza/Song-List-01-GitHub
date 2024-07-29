@@ -57,7 +57,7 @@ for (let button of allDeleteButtons) {
     button.addEventListener("click", function (event) {
         // get the book id
         let songid = Number(event.target.dataset.songid);
-        deleteSong(songs, songid);
+        deleteSong(songs, songid,rating);
         renderList();
     })
 }
