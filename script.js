@@ -40,17 +40,17 @@ function renderList() {
 
 let addBtn = document.querySelector("#addBtn");
 addBtn.addEventListener("click", function () {
-    let songs = document.querySelector("#song").value;
+    let song = document.querySelector("#song").value;
     let artist = document.querySelector("#artist").value;
     let rating = document.querySelector("#rating").value;
-    addsong(songs, artist, rating);
+    addSongs(songs,song, artist, rating);
     renderList();
 });
 
-let saveBtn = document.querySelector("#saveBtn");
-saveBtn.addEventListener("click", function () {
-    saveSongs(songs);
-})
+// let saveBtn = document.querySelector("#saveBtn");
+// saveBtn.addEventListener("click", function () {
+//     saveSongs(songs);
+// })
 
 let allDeleteButtons = document.querySelectorAll(".delete");
 for (let button of allDeleteButtons) {

@@ -8,21 +8,22 @@ async function loadSongs() {
     console.log(response.data.record)
     console.log(response.data.record.songs[0])
     return response.data.record.songs;
-}
-
-async function savesongs(songinfo) {
-    console.log("saved")
-    const response = await axios.put(`${JSON_BIN_BASE_URL}/b/${JSON_BIN_ID}/save`);
-    console.log(response.data);
 
 }
+
+// async function savesongs(songinfo) {
+//     console.log("saved")
+//     const response = await axios.put(`${JSON_BIN_BASE_URL}/b/${JSON_BIN_ID}/save`);
+//     console.log(response.data);
+
+// }
 let songs = [];
 function addSongs(songs, song, artist, rating) {
     let songinfo = {
         "id": Math.floor(Math.random() * 10000 + 1),
         "song": song,
         "artist": artist,
-        "rating": rating
+        "rating": rating,
     }
     // title cannot be empty and author cannot be empty
     if (song == "song" || artist == "artist") {
@@ -34,18 +35,21 @@ function addSongs(songs, song, artist, rating) {
     songs.push(songinfo);
 }
 
-function editSong(songs, songid, song, artist) {
+function editSong(songid, songs, artist, rating) {
     // use a linear search to find the book
     let songToEdit = null;
-    for (let b of song) {
+    for (let b of songs) {
+        console.log(b)
         if (b.id === songid) {
-            bookToEdit = b;
+            songToEdit = b;
             break;
-        }
+        }   
     }
-
+    console.log(songid)
+    console.log(songToEdit)
     songToEdit.song = songs;
     songToEdit.artist = artist;
+    songToEdit.rating = rating;
 }
 
 function deleteSong(songs, songid) {
@@ -53,9 +57,9 @@ function deleteSong(songs, songid) {
     let indexToDelete = null;
     let index = -1; // start from -1 because the first element to 0
 
-    for (let b of songs) {
+    for (let c of songs) {
         index = index + 1;
-        if (b.id == songid) {
+        if (c.id == songid) {
             indexToDelete = index;
             break;
         }
