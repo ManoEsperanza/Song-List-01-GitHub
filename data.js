@@ -60,15 +60,15 @@ function deleteSong(songs, songid) {
     // find the index of the book to delete
     let indexToDelete = null;
     let index = -1; // start from -1 because the first element to 0
-    
+
     for (let b of songs) {
-      index = index + 1;
-      if (b.id == songid) {
-        indexToDelete = index;
-        break;
-      }
+        index = index + 1;
+        if (b.id == songid) {
+            indexToDelete = index;
+            break;
+        }
     }
-  
+
     songs.splice(indexToDelete, 1);
-    
-  }
+
+}
