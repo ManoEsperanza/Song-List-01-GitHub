@@ -18,6 +18,8 @@ async function loadSongs() {
 
 // }
 let songs = [];
+
+
 function addSongs(songs, song, artist, rating) {
     let songinfo = {
         "id": Math.floor(Math.random() * 10000 + 1),
@@ -35,6 +37,7 @@ function addSongs(songs, song, artist, rating) {
     songs.push(songinfo);
 }
 
+
 function editSong(songid, songs, artist, rating) {
     // use a linear search to find the book
     let songToEdit = null;
@@ -43,11 +46,12 @@ function editSong(songid, songs, artist, rating) {
         if (b.id === songid) {
             songToEdit = b;
             break;
-        }   
+        }
     }
     console.log(songid)
     console.log(songToEdit)
-    songToEdit.song = songs;
+    songToEdit.songid = songid;
+    songToEdit.songs = songs
     songToEdit.artist = artist;
     songToEdit.rating = rating;
 }
@@ -56,15 +60,15 @@ function deleteSong(songs, songid) {
     // find the index of the book to delete
     let indexToDelete = null;
     let index = -1; // start from -1 because the first element to 0
-
-    for (let c of songs) {
-        index = index + 1;
-        if (c.id == songid) {
-            indexToDelete = index;
-            break;
-        }
+    
+    for (let b of songs) {
+      index = index + 1;
+      if (b.id == songid) {
+        indexToDelete = index;
+        break;
+      }
     }
-
+  
     songs.splice(indexToDelete, 1);
-
-}
+    
+  }

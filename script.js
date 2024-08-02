@@ -3,24 +3,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     songs = await loadSongs()
     renderList();
 
-    let allEditButtons = document.querySelectorAll(".edit");
-    for (let button of allEditButtons) {
-        console.log(button)
-        button.addEventListener("click", function (event) {
-            console.log("edit");
-            // the first parameter for a function handling an event is the event info
-            let clickedButton = event.target;
-            let songid = Number(clickedButton.dataset.songid);
-            let songs = prompt("Enter the new song");
-            let artist = prompt("Enter the new artist");
-            let rating = prompt("Enter the rating")
-            editSong(songid, songs, artist, rating);
-            // renderList();
 
-        });
-    }
 
-})
 
 function renderList() {
     let songsListDiv = document.querySelector("#playList");
@@ -43,7 +27,7 @@ addBtn.addEventListener("click", function () {
     let song = document.querySelector("#song").value;
     let artist = document.querySelector("#artist").value;
     let rating = document.querySelector("#rating").value;
-    addSongs(songs,song, artist, rating);
+    addSongs(songs, song, artist, rating);
     renderList();
 });
 
@@ -52,13 +36,37 @@ addBtn.addEventListener("click", function () {
 //     saveSongs(songs);
 // })
 
+let allEditButtons = document.querySelectorAll(".edit");
+for (let button of allEditButtons) {
+    console.log(button)
+    button.addEventListener("click", function (event) {
+        console.log("edit");
+        // the first parameter for a function handling an event is the event info
+        let clickedButton = event.target;
+        let songid = Number(clickedButton.dataset.songid);
+        let songs = prompt("Enter the new song");
+        let artist = prompt("Enter the new artist");
+        let rating = prompt("Enter the rating")
+        editSong(songid, songs, artist, rating);
+        
+        console.log(editSong)
+        // renderList();
+
+
+    });
+}
+
+
+
 let allDeleteButtons = document.querySelectorAll(".delete");
 for (let button of allDeleteButtons) {
     button.addEventListener("click", function (event) {
         // get the book id
         let songid = Number(event.target.dataset.songid);
-        deleteSong(songs, songid,rating);
+        deleteSong(songs, songid);
         renderList();
     })
 }
 
+
+})
