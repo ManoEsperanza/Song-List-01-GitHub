@@ -3,38 +3,24 @@ document.addEventListener("DOMContentLoaded", async function () {
     songs = await loadSongs()
     renderList();
 
+})
+
+function renderList() {
+    let songsListDiv = document.querySelector("#playList");
+    let outputString = "";
+    console.log(songs);
+    for (let b of songs) {
+        outputString += `<tr> 
+<td>${b.id}</td><td>${b.song}</d><td>${b.artist}</td><td>${b.rating}</td>
+<td>
+<button class="edit" data-songid="${b.id}">Edit</button>
+<button class="delete" data-songid="${b.id}">Delete</button>
+</td>
+</tr>`
 
 
-
-    function renderList() {
-        let songsListDiv = document.querySelector("#playList");
-        let outputString = "";
-        console.log(songs);
-        for (let b of songs)
-            outputString += `<tr> 
-    <td>${b.id}</td><td>${b.song}</d><td>${b.artist}</td><td>${b.rating}</td>
-    <td>
-    <button class="edit" data-songid="${b.id}">Edit</button>
-    <button class="delete" data-songid="${b.id}">Delete</button>
-    </td>
-    </tr>`
-
-        songsListDiv.innerHTML = outputString;
     }
-
-    let addBtn = document.querySelector("#addBtn");
-    addBtn.addEventListener("click", function () {
-        let song = document.querySelector("#song").value;
-        let artist = document.querySelector("#artist").value;
-        let rating = document.querySelector("#rating").value;
-        addSongs(songs, song, artist, rating);
-        renderList();
-    });
-
-    // let saveBtn = document.querySelector("#saveBtn");
-    // saveBtn.addEventListener("click", function () {
-    //     saveSongs(songs);
-    // })
+    songsListDiv.innerHTML = outputString;
 
     let allEditButtons = document.querySelectorAll(".edit");
     for (let button of allEditButtons) {
@@ -44,13 +30,14 @@ document.addEventListener("DOMContentLoaded", async function () {
             // the first parameter for a function handling an event is the event info
             let clickedButton = event.target;
             let songid = Number(clickedButton.dataset.songid);
-            let songs = prompt("Enter the new song");
+            let song = prompt("Enter the new song");
             let artist = prompt("Enter the new artist");
-            let rating = prompt("Enter the rating")
-            editSong(songid, songs, artist, rating);
+            let rating = prompt("Enter the rating");
+            console.log(songs, songid, song, artist, rating);
+            editSong(songs, songid, song, artist, rating);
 
             console.log(editSong)
-            // renderList();
+            renderList();
 
 
         });
@@ -68,5 +55,23 @@ document.addEventListener("DOMContentLoaded", async function () {
         })
     }
 
+}
 
-})
+let addBtn = document.querySelector("#addBtn");
+addBtn.addEventListener("click", function () {
+    let song = document.querySelector("#song").value;
+    let artist = document.querySelector("#artist").value;
+    let rating = document.querySelector("#rating").value;
+    addSongs(songs, song, artist, rating);
+    renderList();
+});
+
+// let saveBtn = document.querySelector("#saveBtn");
+// saveBtn.addEventListener("click", function () {
+//     saveSongs(songs);
+// })
+
+
+
+
+

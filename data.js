@@ -38,22 +38,26 @@ function addSongs(songs, song, artist, rating) {
 }
 
 
-function editSong(songid, songs, artist, rating) {
+function editSong(songs ,songid, song, artist, rating) {
     // use a linear search to find the book
     let songToEdit = null;
     for (let b of songs) {
         console.log(b)
         if (b.id === songid) {
+            console.log("found>>> ", b)
             songToEdit = b;
             break;
         }
     }
     console.log(songid)
     console.log(songToEdit)
-    songToEdit.songid = songid;
-    songToEdit.songs = songs
+    // songToEdit.songid = songid;
+    songToEdit.song = song
     songToEdit.artist = artist;
     songToEdit.rating = rating;
+    console.log("AFTER EDIT>>>",songToEdit);
+
+    
 }
 
 function deleteSong(songs, songid) {
