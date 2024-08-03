@@ -1,3 +1,12 @@
-body{
-    background-color: aqua;
+.editbutton {
+    background-color: cyan;
+}
+
+.deletebutton {
+    background-color: crimson;
+
+}
+
+.h1color {
+    color: chartreuse text
 }

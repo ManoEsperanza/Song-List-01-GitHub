@@ -11,12 +11,13 @@ async function loadSongs() {
 
 }
 
-// async function savesongs(songinfo) {
-//     console.log("saved")
-//     const response = await axios.put(`${JSON_BIN_BASE_URL}/b/${JSON_BIN_ID}/save`);
-//     console.log(response.data);
+async function saveSongs(songs) {
+    console.log("saved")
+    const response = await axios.put(`${JSON_BIN_BASE_URL}/b/${JSON_BIN_ID}`,{songs:songs});
+    console.log(response.data);
 
-// }
+}
+
 let songs = [];
 
 
@@ -44,7 +45,7 @@ function editSong(songs ,songid, song, artist, rating) {
     for (let b of songs) {
         console.log(b)
         if (b.id === songid) {
-            console.log("found>>> ", b)
+            // console.log("found>>> ", b)
             songToEdit = b;
             break;
         }
@@ -55,9 +56,9 @@ function editSong(songs ,songid, song, artist, rating) {
     songToEdit.song = song
     songToEdit.artist = artist;
     songToEdit.rating = rating;
-    console.log("AFTER EDIT>>>",songToEdit);
+    // console.log("AFTER EDIT>>>",songToEdit);
 
-    
+
 }
 
 function deleteSong(songs, songid) {

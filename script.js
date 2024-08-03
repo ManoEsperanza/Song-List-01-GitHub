@@ -13,8 +13,8 @@ function renderList() {
         outputString += `<tr> 
 <td>${b.id}</td><td>${b.song}</d><td>${b.artist}</td><td>${b.rating}</td>
 <td>
-<button class="edit" data-songid="${b.id}">Edit</button>
-<button class="delete" data-songid="${b.id}">Delete</button>
+<button class="edit editbutton" data-songid="${b.id}">Edit</button>
+<button class="delete deletebutton" data-songid="${b.id}">Delete</button>
 </td>
 </tr>`
 
@@ -66,10 +66,10 @@ addBtn.addEventListener("click", function () {
     renderList();
 });
 
-// let saveBtn = document.querySelector("#saveBtn");
-// saveBtn.addEventListener("click", function () {
-//     saveSongs(songs);
-// })
+let saveBtn = document.querySelector("#saveBtn");
+saveBtn.addEventListener("click", function () {
+    saveSongs(songs);
+})
 
 
 
