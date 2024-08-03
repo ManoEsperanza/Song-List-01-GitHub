@@ -13,7 +13,7 @@ async function loadSongs() {
 
 async function saveSongs(songs) {
     console.log("saved")
-    const response = await axios.put(`${JSON_BIN_BASE_URL}/b/${JSON_BIN_ID}`,{songs:songs});
+    const response = await axios.put(`${JSON_BIN_BASE_URL}/b/${JSON_BIN_ID}`, { songs: songs });
     console.log(response.data);
 
 }
@@ -39,7 +39,7 @@ function addSongs(songs, song, artist, rating) {
 }
 
 
-function editSong(songs ,songid, song, artist, rating) {
+function editSong(songs, songid, song, artist, rating) {
     // use a linear search to find the book
     let songToEdit = null;
     for (let b of songs) {

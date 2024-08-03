@@ -10,9 +10,9 @@ function renderList() {
     let outputString = "";
     console.log(songs);
     for (let b of songs) {
-        outputString += `<tr> 
-<td>${b.id}</td><td>${b.song}</d><td>${b.artist}</td><td>${b.rating}</td>
-<td>
+        outputString += `<tr class="clear"> 
+<td class="shader">${b.id}</td><td class="shader">${b.song}</d><td class="shader">${b.artist}</td><td class="shader">${b.rating}</td>
+<td class="shader">
 <button class="edit editbutton" data-songid="${b.id}">Edit</button>
 <button class="delete deletebutton" data-songid="${b.id}">Delete</button>
 </td>
