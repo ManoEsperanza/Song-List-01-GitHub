@@ -18,7 +18,7 @@
 body {
     background-image: url(Backdrop.avif);
     background-size: 99vw, 99vh;
-    background-repeat: no-repeat;
+    background-repeat:repeat;
     background-color: black;
  
 }
