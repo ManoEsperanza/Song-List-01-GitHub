@@ -7,6 +7,15 @@
 
 }
 
+#addBtn{
+    background-color: darkgoldenrod;
+}
+#saveBtn{
+    background-color: fuchsia;
+}
+body{
+    
+}
 .h1color {
     color: chartreuse text
 }
