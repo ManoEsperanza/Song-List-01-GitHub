@@ -48,10 +48,13 @@ function renderList() {
     let allDeleteButtons = document.querySelectorAll(".delete");
     for (let button of allDeleteButtons) {
         button.addEventListener("click", function (event) {
-            // get the book id
-            let songid = Number(event.target.dataset.songid);
-            deleteSong(songs, songid);
-            renderList();
+            const confirmation = confirm("Do you really want to delete")
+            if (confirmation) {
+
+                let songid = Number(event.target.dataset.songid);
+                deleteSong(songs, songid);
+                renderList();
+            }
         })
     }
 
@@ -63,6 +66,7 @@ addBtn.addEventListener("click", function () {
     let artist = document.querySelector("#artist").value;
     let rating = document.querySelector("#rating").value;
     addSongs(songs, song, artist, rating);
+    alert('Song have been added')
     renderList();
 });
 
@@ -70,6 +74,7 @@ let saveBtn = document.querySelector("#saveBtn");
 saveBtn.addEventListener("click", function () {
 
     saveSongs(songs);
+    alert(`Songs have been saved.`)
 
 
 })
